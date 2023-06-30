@@ -22,11 +22,12 @@ function printResult(response, dollarInput, currencyInput) {
     let conversionRate = response.conversion_rates[currencyInput];
     let resultConversion = calculateConversion(dollarInput, conversionRate);
     let formattedDollar = new Intl.NumberFormat().format(dollarInput);
-    resultStatement.innerText = `$${formattedDollar}(USD) is about ${resultConversion}(${currencyInput}).`;
+    let formattedResult = new Intl.NumberFormat().format(resultConversion);
+    resultStatement.innerText = `$${formattedDollar}(USD) is about ${formattedResult}(${currencyInput}).`;
 }
 
 function printError(error) {
-    resultStatement.innerText = `We were unable to process the data at this time because of ${error}`;
+    resultStatement.innerText = `We were unable to process the data at this time: ${error}`;
 }
 
 function handleForm(event) {
