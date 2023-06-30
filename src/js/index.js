@@ -3,33 +3,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/styles.css";
 import exchangeService from './exchangeService';
 
-function processExchangeData() {
+function processExchangeData(dollarInput, currencyInput) {
     exchangeService.getExchangeRates()
-    // .then(function (response) {
-    //     if (response.conversion_rates) {
-    //         printResult(response, dollarInput, currencyInput);
-    //     } else {
-    //         printError(response)
-    //     }
-    // });
+        .then(function (response) {
+            if (response.conversion_rates) {
+                printResult(response, dollarInput, currencyInput);
+            } else {
+                printError(error)
+            }
+        });
 }
 
-// let resultStatement = document.querySelector("#result");
+let resultStatement = document.querySelector("#result");
 
-// function printResult(response, dollarInput, currencyInput) {
+function printResult(response, dollarInput, currencyInput) {
 
-// }
+}
 
-// function printError(response) {
-//     resultStatement.innerText = `We were unable to process the data at this time because of an error: ${response}`;
-// }
+function printError(error) {
+    resultStatement.innerText = `We were unable to process the data at this time because of an error: ${error}`;
+}
 
 function handleForm(event) {
     event.preventDefault();
     let dollarInput = document.querySelector("#USD").value
     let currencyInput = document.querySelector("#currencies").value
-    console.log(dollarInput, currencyInput);
-    processExchangeData();
+    processExchangeData(dollarInput, currencyInput);
 
 }
 

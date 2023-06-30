@@ -16,3 +16,12 @@
 //         expect(newUser.jupiterPassage).toEqual("");
 //     });
 
+import calculateConversion from "../src/js/calculator";
+
+describe("calulateConversion function", () => {
+
+    test("It should perform a basic multiplication", () => {
+        let calculation = calculateConversion(10, 1.5);
+        expect(calculation).toEqual(15);
+    })
+})
