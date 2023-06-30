@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/styles.css";
 import exchangeService from './exchangeService';
+import calculateConversion from './calculator';
 
 function processExchangeData(dollarInput, currencyInput) {
     exchangeService.getExchangeRates()
@@ -9,7 +10,7 @@ function processExchangeData(dollarInput, currencyInput) {
             if (response.conversion_rates) {
                 printResult(response, dollarInput, currencyInput);
             } else {
-                printError(error)
+                printError(response)
             }
         });
 }
@@ -17,7 +18,9 @@ function processExchangeData(dollarInput, currencyInput) {
 let resultStatement = document.querySelector("#result");
 
 function printResult(response, dollarInput, currencyInput) {
-
+    let conversionRate = response.conversion_rates[`${currencyInput}`];
+    let resultConversion = calculateConversion(dollarInput, conversionRate);
+    resultStatement.innerText = `$${dollarInput}(USD) is about ${resultConversion}(${currencyInput})`;
 }
 
 function printError(error) {
@@ -29,7 +32,6 @@ function handleForm(event) {
     let dollarInput = document.querySelector("#USD").value
     let currencyInput = document.querySelector("#currencies").value
     processExchangeData(dollarInput, currencyInput);
-
 }
 
 document.querySelector("#convertForm").addEventListener("submit", handleForm);
