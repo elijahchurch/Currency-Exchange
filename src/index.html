@@ -6,13 +6,13 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <h1>US Currency Exchange</h1>
         <p> Convert US dollars(USD) to any other country's currency. Note: The North Korean Won(KPW) exchange rate data
             is unsupported due to minimal international trade and sanctions.</p>
         <form id="convertForm">
             <label for="USD"> Enter a US dollar amount:</label>
-            <input id="USD" name="USD" type="number" required>
+            <input id="USD" name="USD" type="number" min="0" required>
             </br>
             <label for="currencies">Select a currency to convert it to:</label>
             <select id="currencies" required>
@@ -181,8 +181,10 @@
         </form>
     </div>
 
-    <div>
-        <h2 id="result"></h2>
+    <div id="show" class="hidden">
+        <div class="container condense">
+            <h2 id="result"></h2>
+        </div>
     </div>
 
 </body>

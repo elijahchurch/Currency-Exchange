@@ -19,7 +19,7 @@ let resultStatement = document.querySelector("#result");
 const inputForm = document.querySelector("#convertForm");
 
 function printResult(response, dollarInput, currencyInput) {
-    let conversionRate = response.conversion_rates[`${currencyInput}`];
+    let conversionRate = response.conversion_rates[currencyInput];
     let resultConversion = calculateConversion(dollarInput, conversionRate);
     resultStatement.innerText = `$${dollarInput}(USD) is about ${resultConversion}(${currencyInput})`;
 }
@@ -34,6 +34,7 @@ function handleForm(event) {
     let currencyInput = document.querySelector("#currencies").value;
     processExchangeData(dollarInput, currencyInput);
     inputForm.reset();
+    document.querySelector("#show").removeAttribute("class", "hidden");
 }
 
 inputForm.addEventListener("submit", handleForm);
