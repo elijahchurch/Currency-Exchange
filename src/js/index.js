@@ -21,7 +21,8 @@ const inputForm = document.querySelector("#convertForm");
 function printResult(response, dollarInput, currencyInput) {
     let conversionRate = response.conversion_rates[currencyInput];
     let resultConversion = calculateConversion(dollarInput, conversionRate);
-    resultStatement.innerText = `$${dollarInput}(USD) is about ${resultConversion}(${currencyInput}).`;
+    let formattedDollar = new Intl.NumberFormat().format(dollarInput);
+    resultStatement.innerText = `$${formattedDollar}(USD) is about ${resultConversion}(${currencyInput}).`;
 }
 
 function printError(error) {
