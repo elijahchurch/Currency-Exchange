@@ -10,7 +10,7 @@ function processExchangeData(dollarInput, currencyInput) {
             if (response.conversion_rates) {
                 printResult(response, dollarInput, currencyInput);
             } else {
-                printError(response)
+                printError(response);
             }
         });
 }
@@ -24,13 +24,13 @@ function printResult(response, dollarInput, currencyInput) {
 }
 
 function printError(error) {
-    resultStatement.innerText = `We were unable to process the data at this time because of an error: ${error}`;
+    resultStatement.innerText = `We were unable to process the data at this time because of an ${error}`;
 }
 
 function handleForm(event) {
     event.preventDefault();
-    let dollarInput = document.querySelector("#USD").value
-    let currencyInput = document.querySelector("#currencies").value
+    let dollarInput = document.querySelector("#USD").value;
+    let currencyInput = document.querySelector("#currencies").value;
     processExchangeData(dollarInput, currencyInput);
 }
 
