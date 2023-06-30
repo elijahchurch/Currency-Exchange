@@ -21,9 +21,7 @@
 * Postman (for testing the API calls)
 
 ## Description:
-
-
-
+This application when fully built displays a webpage created and styled with HTML and CSS. It contains a form that takes to data values: the amount in US dollars that the user wants to convert and the currency the user wants it converted to. The dollar amount is taken from a number input and the currency is selected from a drop-down selector. When the user hits submit, a handleForm event occurs through JavaScript. The handle form event stores two inputed values as variables for use: dollarInput --> the US dollar amount as a number, and inputCurrency --> value is listed as a 3-digit country code in the chosen option element. An API call is made to retrieve a JSON response object that contains all the current conversation rates for different countries to USD. A printResult function will then run. It retreives the conversation rate by looking into response.conversation_rates and accessing the desired property there by inputting the stored inputCurrency code. A calculateConversion function then runs that multiplies the dollarInput by the targeted conversation_rate and returns the result as a string to the hundredth decimal point. The inner text of a targeted p element in the DOM  will then display a message that states the dollar input and what its conversation (equal to the result taken from the calculateConverstion function) is to the selected country's currency.If the API call is unsuccessful, an error message will display as the inner text of targeted p element in the DOM in the HTML.
 
 ## Setup/ Installation Requirements
 
@@ -36,7 +34,7 @@
 
 ## Known Bugs
 
-* I would like to have the displayed result convert the currency to the locale format of the selected country, but was having trouble using Intl.NumberFormat.format correctly. 
+* I would like to have the displayed result convert the currency to the locale format of the selected country, but was having trouble using Intl.NumberFormat.format correctly. I also made an attempt to use the Enriched data API endpoint that ExchangeRate offers, but realized (the hard way from a 403 error) that that endpoint is part of a paid service. 
 
 ## License
 
