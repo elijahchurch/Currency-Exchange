@@ -1,6 +1,12 @@
 body {
     text-align: center;
     font-size: larger;
+    background-color: #79c2d0;
+    color: #07233f;
+}
+
+h1 {
+    text-decoration: underline;
 }
 
 .hidden {
@@ -10,12 +16,25 @@ body {
 
 .container {
     border-style: outset;
+    border-color: #5585b5;
     border-width: 10px;
     margin: 0 auto;
     margin-top: 30px;
     padding: 20px;
+    background-color: #bbe4e9;
 }
 
 .condense {
     width: 30%;
+}
+
+#USD {
+    width: 100px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.inputStyle {
+    background-color: #afecf8;
+    color: #02162b;
 }
