@@ -16,6 +16,7 @@ function processExchangeData(dollarInput, currencyInput) {
 }
 
 let resultStatement = document.querySelector("#result");
+const inputForm = document.querySelector("#convertForm");
 
 function printResult(response, dollarInput, currencyInput) {
     let conversionRate = response.conversion_rates[`${currencyInput}`];
@@ -24,7 +25,7 @@ function printResult(response, dollarInput, currencyInput) {
 }
 
 function printError(error) {
-    resultStatement.innerText = `We were unable to process the data at this time because of an ${error}`;
+    resultStatement.innerText = `We were unable to process the data at this time because of ${error}`;
 }
 
 function handleForm(event) {
@@ -32,7 +33,8 @@ function handleForm(event) {
     let dollarInput = document.querySelector("#USD").value;
     let currencyInput = document.querySelector("#currencies").value;
     processExchangeData(dollarInput, currencyInput);
+    inputForm.reset();
 }
 
-document.querySelector("#convertForm").addEventListener("submit", handleForm);
+inputForm.addEventListener("submit", handleForm);
 
