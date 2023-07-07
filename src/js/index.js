@@ -19,11 +19,19 @@ let resultStatement = document.querySelector("#result");
 const inputForm = document.querySelector("#convertForm");
 
 function printResult(response, dollarInput, currencyInput) {
-    let conversionRate = response.conversion_rates[currencyInput];
-    let resultConversion = calculateConversion(dollarInput, conversionRate);
-    let formattedDollar = new Intl.NumberFormat().format(dollarInput);
-    let formattedResult = new Intl.NumberFormat().format(resultConversion);
-    resultStatement.innerText = `$${formattedDollar}(USD) is about ${formattedResult}(${currencyInput}).`;
+    if (response.conversion_rates[currencyInput]) {
+        let conversionRate = response.conversion_rates[currencyInput];
+        let resultConversion = calculateConversion(dollarInput, conversionRate);
+        let formattedDollar = new Intl.NumberFormat().format(dollarInput);
+        let formattedResult = new Intl.NumberFormat().format(resultConversion);
+        resultStatement.innerText = `$${formattedDollar}(USD) is about ${formattedResult}(${currencyInput}).`;
+    } else {
+        const link = document.createElement("a");
+        link.innerText = " exchangerate-api";
+        link.setAttribute("href", "https://www.exchangerate-api.com/docs/supported-currencies");
+        resultStatement.innerText = `${currencyInput} is not a valid currency type. Please check this link to see a list of all supported currencies:`
+        resultStatement.append(link);
+    }
 }
 
 function printError(error) {
